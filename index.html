@@ -3,344 +3,1195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PXLGIS | Leading GIS Solution Provider</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>PXLGIS - Leading GIS & IT Solutions Provider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
-        
-        .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('https://picsum.photos/id/1015/1920/1080');
-            background-size: cover;
-            background-position: center;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        .nav-link {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        :root {
+            /* Core neutrals */
+            --white: #ffffff;
+            --paper: #F8FAFC;
+            --slate-tint: #F1F5F9;
+            --slate-tint-deep: #E2E8F0;
+            --border-soft: #E2E8F0;
+            --border-soft-strong: #CBD5E1;
+
+            /* Text */
+            --ink: #0F172A;
+            --ink-soft: #334155;
+            --body-text: #475569;
+            --muted-on-dark: #CBD5E1;
+            --faint-on-dark: #94A3B8;
+
+            /* Corporate Blue-Teal system */
+            --navy-950: #0F172A;
+            --navy-900: #1E2937;
+            --navy-800: #334155;
+            --navy-700: #475569;
+            --blue-700: #1E40AF;
+            --blue-600: #2563EB;
+            --blue-500: #3B82F6;
+            --teal-500: #14B8A6;
+            --teal-600: #0F766E;
+
+            --gradient-dark: linear-gradient(150deg, #0F172A 0%, #1E2937 45%, #334155 100%);
+            --gradient-accent: linear-gradient(135deg, var(--blue-600), var(--teal-500));
+            --gradient-text: linear-gradient(135deg, var(--blue-700) 0%, var(--teal-500) 100%);
+
+            --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+            --shadow-med: 0 20px 45px rgba(15, 23, 42, 0.12);
+            --shadow-accent: 0 20px 40px rgba(37, 99, 235, 0.18);
+
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .nav-link:hover {
-            color: #3b82f6;
-            transform: translateY(-2px);
+
+        html {
+            scroll-behavior: smooth;
         }
-        
-        .service-card {
-            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: var(--body-text);
+            background-color: var(--white);
         }
-        
-        .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
         }
-        
-        .section-header:after {
+
+        /* ============ HEADER & NAV ============ */
+        header {
+            background: rgba(255, 255, 255);
+            backdrop-filter: blur(12px);
+            padding: 1.0rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-svg {
+            width: 200px;
+            height: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::before {
             content: '';
             position: absolute;
-            width: 80px;
-            height: 4px;
-            background: #3b82f6;
-            bottom: -12px;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--blue-600);
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            background: var(--gradient-dark);
+            color: var(--white);
+            padding: 5rem 3rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -8%;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -35%;
+            left: -8%;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.18) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero .eyebrow {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--teal-500);
+            border: 1px solid rgba(20, 184, 166, 0.4);
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--teal-500), #ffffff);
+			padding-right: 10px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2.8rem;
+            color: var(--muted-on-dark);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 1rem 2.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 2px solid;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button.primary {
+            background: linear-gradient(135deg, var(--blue-600), var(--teal-600));
+            border-color: transparent;
+            color: var(--white);
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border-color: rgba(255, 255, 255, 0.5);
+            color: var(--white);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--white);
+            border-color: var(--white);
+            color: var(--navy-900);
+            transform: translateY(-3px);
+        }
+
+        /* ============ SECTION STYLING ============ */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            max-width: none;
+            background: linear-gradient(180deg, var(--slate-tint) 0%, var(--paper) 100%);
+        }
+
+        .section-alt > * {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--blue-600);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+            color: var(--ink);
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 1.08rem;
+            color: var(--body-text);
+            max-width: 650px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ STATS SECTION ============ */
+        .stats-section {
+            background: var(--white);
+            border: 1px solid var(--border-soft);
+            border-radius: 16px;
+            padding: 4rem 3rem;
+            margin-top: 4rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1rem 2rem;
+            border-left: 3px solid var(--border-soft-strong);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateX(8px);
+            border-left-color: var(--blue-600);
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--body-text);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        /* ============ SERVICES SECTION ============ */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-item {
+            background: var(--white);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-item:hover {
+            border-color: var(--border-soft-strong);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-med);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--gradient-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            color: var(--white);
+        }
+
+        .service-item h3 {
+            font-size: 1.3rem;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-item p {
+            color: var(--body-text);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* ============ EXPERTISE SECTION ============ */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-box {
+            background: var(--slate-tint);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .expertise-box:hover {
+            background: var(--white);
+            border-color: var(--border-soft-strong);
+            box-shadow: var(--shadow-med);
+            transform: translateY(-6px);
+        }
+
+        .expertise-box h3 {
+            color: var(--blue-700);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .expertise-box h3::before {
+            content: '';
+            width: 3px;
+            height: 20px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .expertise-list {
+            list-style: none;
+        }
+
+        .expertise-list li {
+            color: var(--body-text);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .expertise-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--blue-600);
+            font-size: 0.65rem;
+        }
+
+        .expertise-list li:hover {
+            color: var(--blue-700);
+            padding-left: 2rem;
+        }
+
+        /* ============ TECHNOLOGY SECTION ============ */
+        .tech-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tech-card {
+            background: var(--white);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .tech-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 0 0 12px 12px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tech-card:hover::after {
+            opacity: 1;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-med);
+        }
+
+        .tech-card h4 {
+            color: var(--blue-700);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .tech-card p {
+            color: var(--body-text);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ============ ABOUT/FEATURES SECTION ============ */
+        .features-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            color: var(--ink-soft);
+            font-size: 1rem;
+            margin-bottom: 1.6rem;
+            padding-left: 3rem;
+            position: relative;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .features-list li strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--slate-tint);
+            color: var(--blue-600);
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Modernized Feature Image - Glowing Bulb */
+        .feature-image {
+            background: var(--gradient-dark);
+            border-radius: 20px;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-med);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feature-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 40%, rgba(20, 184, 166, 0.25) 0%, transparent 60%);
+            animation: glow-pulse 4s ease-in-out infinite;
+        }
+
+        .feature-image::after {
+            content: '';
+            position: absolute;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.4) 20%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(30px);
+            animation: soft-glow 3s ease-in-out infinite alternate;
+        }
+
+        .bulb-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .feature-image i {
+            font-size: 5.5rem;
+            color: #14B8A6;
+            filter: drop-shadow(0 0 25px #14B8A6) drop-shadow(0 0 45px #14B8A6);
+            animation: bulb-flicker 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Fill the visual gap with subtle tech pattern */
+        .feature-image .tech-overlay {
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(45deg, rgba(59,130,246,0.03) 25%, transparent 25%) -50px 0 / 100px 100px,
+                linear-gradient(45deg, transparent 75%, rgba(20,184,166,0.03) 75%) -50px 0 / 100px 100px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes soft-glow {
+            from { transform: translate(-50%, -50%) scale(0.9); }
+            to { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes bulb-flicker {
+            0%, 100% { filter: drop-shadow(0 0 25px #14B8A6) drop-shadow(0 0 45px #14B8A6); }
+            50% { filter: drop-shadow(0 0 35px #14B8A6) drop-shadow(0 0 60px #14B8A6); }
+        }
+
+        /* ============ CTA SECTION ============ */
+        .cta-banner {
+            background: var(--gradient-dark);
+            border-radius: 16px;
+            padding: 4.5rem 4rem;
+            text-align: center;
+            margin: 6rem auto;
+            max-width: 1400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent);
+            border-radius: 50%;
+        }
+
+        .cta-banner h2 {
+            font-size: 2.3rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            font-weight: 800;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            color: var(--muted-on-dark);
+            margin-bottom: 2.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============ CONTACT SECTION ============ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-card:hover {
+            border-color: var(--border-soft-strong);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-med);
+        }
+
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--gradient-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.4rem;
+            color: var(--white);
+        }
+
+        .contact-card h3 {
+            color: var(--ink);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--body-text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .contact-card a {
+            text-decoration: none;
+            color: var(--blue-600);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--blue-700);
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background: linear-gradient(180deg, var(--navy-900) 0%, var(--navy-950) 100%);
+            color: var(--muted-on-dark);
+            padding: 4.5rem 3rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-col p, .footer-col ul {
+            font-size: 0.95rem;
+            color: var(--faint-on-dark);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: var(--faint-on-dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--teal-500);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            text-align: center;
+            color: var(--faint-on-dark);
+            font-size: 0.9rem;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1.5rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .features-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-image {
+                height: 320px;
+            }
+
+            .cta-banner {
+                padding: 2.5rem 1.8rem;
+                margin: 3.5rem auto;
+                width: calc(100% - 3rem);
+            }
+
+            .cta-banner h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800">
-    <!-- Navbar -->
-    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-x-3">
-                <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold">PXL</div>
-                <div>
-                    <span class="text-2xl font-bold tracking-tight text-gray-900">PXLGIS</span>
-                </div>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="PXLGIS_Logo.png" alt="PXLGIS Logo" class="logo-svg">
             </div>
-            
-            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                <a href="#home" onclick="smoothScroll('home')" class="nav-link text-gray-600 hover:text-blue-700">Home</a>
-                <a href="#about" onclick="smoothScroll('about')" class="nav-link text-gray-600 hover:text-blue-700">About</a>
-                <a href="#services" onclick="smoothScroll('services')" class="nav-link text-gray-600 hover:text-blue-700">Services</a>
-                <a href="#expertise" onclick="smoothScroll('expertise')" class="nav-link text-gray-600 hover:text-blue-700">Expertise</a>
-                <a href="#technologies" onclick="smoothScroll('technologies')" class="nav-link text-gray-600 hover:text-blue-700">Technologies</a>
-                <a href="#footer" onclick="smoothScroll('footer')" class="nav-link text-gray-600 hover:text-blue-700">Contact</a>
-            </div>
-            
-            <button onclick="showContactModal()" 
-                    class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2.5 rounded-2xl text-sm font-semibold flex items-center gap-x-2 transition-all">
-                <i class="fas fa-paper-plane"></i>
-                Contact Us
-            </button>
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#expertise">Expertise</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero -->
-    <section id="home" class="hero-bg h-screen flex items-center text-white">
-        <div class="max-w-7xl mx-auto px-6 pt-20">
-            <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-x-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-3xl text-sm mb-6">
-                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                     Comprehensive GIS Solution Provider
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">Your GIS Solutions Partner</span>
+            <h1>Transform Your<br><span>Geospatial Vision Into Reality</span></h1>
+            <p class="tagline">Advanced GIS & Strategic IT Consulting and Solutions Provider for Enterprise Success</p>
+            <div class="hero-buttons">
+                <a href="mailto:info@pxlgis.com" class="cta-button primary">
+                    <i class="fas fa-arrow-right"></i> Let's Connect
+                </a>
+                <a href="#services" class="cta-button secondary">
+                    <i class="fas fa-play"></i> Explore Solutions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section>
+        <div class="section-header">
+            <span class="section-label">Impact & Scale</span>
+            <h2 class="section-title">Driving Innovation in Geospatial Technology</h2>
+            <p class="section-subtitle">We combine cutting-edge geospatial technology with practical expertise to deliver accurate, scalable and future-ready GIS & IT solutions.</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">GIS & RS Domain Experts & Professionals</div>
                 </div>
-                
-                <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tighter mb-6">
-                    Geospatial Solutions<br>That Drives Results
-                </h1>
-                
-                <p class="text-xl text-white/90 max-w-md mb-10">
-                    Empowering enterprises with cutting-edge GIS solutions, data analytics, and seamless system integrations.
-                </p>
-                
-                <div class="flex flex-wrap gap-4">
-                    <a href="#services" onclick="smoothScroll('services')" 
-                       class="bg-white text-blue-700 hover:bg-blue-50 px-8 py-4 rounded-2xl font-semibold text-lg inline-flex items-center gap-x-3 group">
-                        Explore Our Services
-                        <span class="group-active:rotate-45 transition">→</span>
-                    </a>
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Team of GIS Experts  with 25+ Years of Industry Experience </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">Data Records Managed by the GIS Experts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Excellence for GIS Database and Applications</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Us -->
-    <section id="about" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-16 items-center">
-                <div class="md:col-span-7">
-                    <div class="section-header">
-                        <span class="uppercase text-blue-600 text-sm font-semibold tracking-widest">About PXLGIS</span>
-                        <h2 class="text-5xl font-bold tracking-tight mt-3 leading-none">Transforming Businesses with Geospatial Solutions</h2>
-                    </div>
-                    
-                    <div class="prose prose-lg mt-8 text-gray-600">
-                        <p>PXLGIS is a leading GIS and IT solutions provider based in India, specializing in GIS technologies and open-source solutions.</p>
-                        <p>We partner with clients across Electrical, Water, Oil &amp; Gas Utilities, Urban Local Bodies, and more to deliver application development, data management, system integration, and maintenance services that drive revenue growth and operational excellence.</p>
-                    </div>
-                </div>
-                
-                <div class="md:col-span-5">
-                    <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-xl">
-                        <img src="https://picsum.photos/id/1016/800/620" alt="GIS Team at Work" class="w-full h-full object-cover">
-                    </div>
+    <!-- Core Capabilities -->
+    <section id="services" class="section-alt">
+        <div class="section-header">
+            <span class="section-label">What We Do</span>
+            <h2 class="section-title">Core Service Offerings</h2>
+            <p class="section-subtitle">We provide End-to-end GIS solutions spanning data, development, integration and strategic consulting:</p>
+        </div>
+
+        <div class="services-container">
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-compass"></i></div>
+                <h3>Strategic Consulting</h3>
+                <p>GIS roadmap development, enterprise solution upgradation, gap analysis and digital transformation strategies aligned with your enterprise objectives and growth vision.</p>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-database"></i></div>
+                <h3>Data Management</h3>
+                <p>Comprehensive data modeling, ETL migration, ArcFM & Utility Network upgradation, Data quality governance and lifecycle management for enterprise GIS systems.</p>
+            </div>
+			
+			<div class="service-item">
+                <div class="service-icon"><i class="fas fa-satellite"></i></div>
+                <h3>Remote Sensing & Basemap</h3>
+                <p>Satellite imagery processing, basemap services, classification and change detection analytics for planning and environmental monitoring.</p>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <h3>Application Development</h3>
+                <p>Custom web, mobile and enterprise GIS applications built on ESRI ArcGIS, open-source stacks and modern cloud architectures.</p>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-sitemap"></i></div>
+                <h3>System Integration</h3>
+                <p>We seamlessly integrate GIS with enterprise systems including- NA, EAMS, DMS, SCADA, CC&B, AMI, CRM, CIS, IDMS and others to create a unified geospatial ecosystem.</p>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon"><i class="fas fa-headset"></i></div>
+                <h3>Managed Support</h3>
+                <p>Round-the-clock SLA-backed application support, technical training and capacity building for sustainable GIS adoption.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise & Domains -->
+    <section id="expertise">
+        <div class="section-header">
+            <span class="section-label">Deep Specialization</span>
+            <h2 class="section-title">Proven Expertise</h2>
+            <p class="section-subtitle">Domain knowledge and technical capabilities refined across multiple sectors and geographies:</p>
+        </div>
+
+        <div class="expertise-grid">
+            <div class="expertise-box">
+                <h3>GIS Specializations</h3>
+                <ul class="expertise-list">
+					<li>GIS Strategic Planning</li>
+                    <li>Satellite Imagery & Basemap</li>
+                    <li>GPS/DGPS/Drone Mapping</li>
+                    <li>Enterprise Database Design & Modeling (inclding ArcFM & Utility Network)</li>
+					<li>Enterprise Solutions Upgradation</li>
+                    <li>Data Migration & Upgradation</li>
+                    <li>Web & Mobile GIS Solutions etc.</li>
+                </ul>
+            </div>
+
+            <div class="expertise-box">
+                <h3>Industry Domains</h3>
+                <ul class="expertise-list">
+                    <li>Electrical & Other Utilities</li>
+					<li>Municipal/Urban Local Bodies</li>
+					<li>Mines & Geology</li>
+                    <li>Water Resource Management</li>	
+                    <li>Natural Resources</li>
+					<li>Land Use/Land Cover</li>
+					<li>Critical Infrastructure etc.</li>
+                </ul>
+            </div>
+
+            <div class="expertise-box">
+                <h3>Core Competencies</h3>
+                <ul class="expertise-list">
+                    <li>Spatial Database Architecture</li>
+                    <li>Geospatial Data Analytics</li>
+                    <li>End-to-End Apps Development</li>
+                    <li>System Integration & APIs</li>
+                    <li>Qyality Assurance & Testing</li>
+					<li>Training & Capacity Building</li>
+                    <li>Technical Mentoring etc.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section id="technology" class="section-alt">
+        <div class="section-header">
+            <span class="section-label">Technical Depth</span>
+            <h2 class="section-title">Technology Stack</h2>
+            <p class="section-subtitle">Enterprise platforms & technologies we specialize in:</p>
+        </div>
+
+        <div class="tech-showcase">
+            <div class="tech-card">
+                <h4>GIS Platforms</h4>
+                <p>ESRI ArcGIS Suit of Products (Pro, Enterprise, Online, Portal), ArcFM, Utility Network, GeoServer, QGIS, OpenLayers, Leaflet, Mapbox etc.</p>
+            </div>
+
+            <div class="tech-card">
+                <h4>Databases</h4>
+                <p>Enterprise Geospatial Databases including - Oracle, SQL Server, PostgreSQL, MySQL, MongoDB, ArcSDE etc.</p>
+            </div>
+
+            <div class="tech-card">
+                <h4>Web & Mobile</h4>
+                <p>React, Angular, Bootstrap, Node.js, Express.js, Flutter, HTML5, CSS3, JavaScript API, Python API, OpenLayers etc.</p>
+            </div>
+
+            <div class="tech-card">
+                <h4>Programming Languages</h4>
+                <p>Python, JavaScript/TypeScript, Java, C#/.NET, ArcPy, SQL, Groovy etc.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section>
+        <div class="section-header">
+            <span class="section-label">Why PXLGIS</span>
+            <h2 class="section-title">What Sets Us Apart</h2>
+            <p class="section-subtitle">A commitment to excellence, innovation and transformative outcomes:</p>
+        </div>
+
+        <div class="features-section">
+            <div>
+                <ul class="features-list">
+                    <li><strong>Deep GIS Domain Expertise</strong> - Team of experts with 25+ years of experience, specializing in geospatial architecture and enterprise solutions</li>
+                    <li><strong>End-to-End Ownership</strong> - From strategic planning through implementation, testing and long-term support</li>
+                    <li><strong>Technology Agnostic</strong> - ESRI, open-source or hybrid—we architect for your specific needs</li>
+                    <li><strong>Proven Delivery Track Record</strong> - 20+ successful enterprise engagements across utilities and urban management</li>
+                    <li><strong>Proactive Partnership Approach</strong> - We act as an extension of your team, not a vendor</li>
+                    <li><strong>24/7 Managed Support</strong> - SLA-backed maintenance ensures your systems run continuously</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <div class="tech-overlay"></div>
+                <div class="bulb-container">
+                    <i class="fas fa-lightbulb"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="uppercase text-blue-600 text-sm font-semibold tracking-widest">Our Capabilities</span>
-                <h2 class="text-5xl font-bold tracking-tight mt-3">Comprehensive GIS Solutions</h2>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="service-card bg-white rounded-3xl p-8 border border-gray-100">
-                    <div class="w-14 h-14 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                        <i class="fas fa-chart-network"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">GIS Consulting</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Strategic Planning &amp; Roadmaps</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Gap Analysis &amp; As-Is/To-Be Design</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> ROI Analysis &amp; POC Development</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card bg-white rounded-3xl p-8 border border-gray-100">
-                    <div class="w-14 h-14 bg-indigo-100 text-indigo-700 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">GIS Development</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Custom Web &amp; Mobile GIS Apps</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> ArcGIS Online / Portal Solutions</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> ArcPy Scripting &amp; Automation</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card bg-white rounded-3xl p-8 border border-gray-100">
-                    <div class="w-14 h-14 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                        <i class="fas fa-plug"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">System Integration</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> OMS, DMS, SCADA, CRM Integration</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Enterprise Database &amp; ETL</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Cloud &amp; On-Premise Solutions</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card bg-white rounded-3xl p-8 border border-gray-100">
-                    <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">Support &amp; Maintenance</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> 24/7 Ticketing Management</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Application Enhancements</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Training &amp; Transition Support</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card bg-white rounded-3xl p-8 border border-gray-100">
-                    <div class="w-14 h-14 bg-purple-100 text-purple-700 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">Data Management</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Data Modeling &amp; Migration</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Quality Assurance &amp; ETL</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-emerald-500 mt-1"></i> Satellite Imagery Processing</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Expertise -->
-    <section id="expertise" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold tracking-tight">Our Areas of Expertise</h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Proven experience delivering enterprise-grade GIS solutions across industries</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="border-l-4 border-blue-600 pl-8">
-                    <h4 class="font-semibold text-xl mb-6 flex items-center gap-x-3"><span class="text-blue-600">01</span> GIS Consulting</h4>
-                    <div class="space-y-6 text-gray-600">
-                        <p>Strategic planning, gap analysis, HLD/LLD design, GPS mapping, satellite imagery processing, and enterprise GIS roadmaps.</p>
-                    </div>
-                </div>
-                
-                <div class="border-l-4 border-indigo-600 pl-8">
-                    <h4 class="font-semibold text-xl mb-6 flex items-center gap-x-3"><span class="text-indigo-600">02</span> Application Development</h4>
-                    <div class="space-y-6 text-gray-600">
-                        <p>Custom ArcGIS, OpenLayers, QGIS, Flutter, and web/mobile solutions with seamless enterprise integration.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technologies -->
-    <section id="technologies" class="py-24 bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold tracking-tight mt-3">Our Technology Stack</h2>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">🗺️</div>
-                    <div class="font-semibold">ESRI ArcGIS Suite</div>
-                    <div class="text-xs text-white/60 mt-1">Server • Pro • Online • Portal</div>
-                </div>
-                <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">🌐</div>
-                    <div class="font-semibold">Open Source GIS</div>
-                    <div class="text-xs text-white/60 mt-1">QGIS • GeoServer • PostgreSQL • OpenLayers</div>
-                </div>
-                <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">☁️</div>
-                    <div class="font-semibold">Cloud Platforms</div>
-                    <div class="text-xs text-white/60 mt-1">Azure • AWS • Google Cloud</div>
-                </div>
-                <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 text-center hover:border-blue-500 transition">
-                    <div class="text-4xl mb-4">🔗</div>
-                    <div class="font-semibold">Integration</div>
-                    <div class="text-xs text-white/60 mt-1">SCADA • OMS • CRM • Oracle CC&amp;B</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer (with Contact Info on the right) -->
-    <footer id="footer" class="bg-gray-900 text-white py-20">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-y-12">
-            <div class="md:col-span-5">
-                <div class="flex items-center gap-x-3 mb-6">
-                    <div class="w-9 h-9 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold">PXLGIS</div>
-                </div>
-                <p class="text-gray-400 max-w-sm">Delivering excellence in GIS consulting, development, integration, and support across India and beyond.</p>
-            </div>
-            
-            <div class="md:col-span-3">
-                <div class="uppercase text-xs tracking-widest text-gray-500 mb-6">Quick Links</div>
-                <div class="space-y-3 text-gray-300">
-                    <a href="#about" class="block hover:text-white">About Us</a>
-                    <a href="#services" class="block hover:text-white">Services</a>
-                    <a href="#technologies" class="block hover:text-white">Technologies</a>
-                </div>
-            </div>
-            
-            <!-- Contact Info on the right side -->
-            <div class="md:col-span-4">
-                <div class="uppercase text-xs tracking-widest text-gray-500 mb-6">Contact Us</div>
-                <div class="space-y-4 text-gray-300">
-                    <div>India (HQ)</div>
-                    <a href="mailto:info@pxlgis.com" class="block hover:text-blue-400 transition">info@pxlgis.com</a>
-                    <a href="tel:+919876543210" class="block hover:text-blue-400 transition">+919876543210</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center text-gray-500 text-sm mt-16 border-t border-white/10 pt-8">
-            © 2026 PXLGIS. All Rights Reserved.
-        </div>
-    </footer>
-
-    <!-- Contact Modal -->
-    <div id="contactModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]">
-        <div class="bg-white rounded-3xl max-w-lg w-full mx-4 overflow-hidden">
-            <div class="px-8 pt-8 pb-6 border-b">
-                <h3 class="text-3xl font-semibold">Let's Connect</h3>
-                <p class="text-gray-500">Tell us about your GIS requirements</p>
-            </div>
-            
-            <form class="p-8 space-y-6">
-                <div class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="First Name" class="border border-gray-200 rounded-2xl px-5 py-4 focus:outline-none focus:border-blue-500">
-                    <input type="text" placeholder="Last Name" class="border border-gray-200 rounded-2xl px-5 py-4 focus:outline-none focus:border-blue-500">
-                </div>
-                <input type="email" placeholder="Business Email" class="w-full border border-gray-200 rounded-2xl px-5 py-4 focus:outline-none focus:border-blue-500">
-                <input type="tel" placeholder="Phone Number" class="w-full border border-gray-200 rounded-2xl px-5 py-4 focus:outline-none focus:border-blue-500">
-                <textarea placeholder="Tell us about your project..." rows="5" class="w-full border border-gray-200 rounded-3xl px-5 py-4 focus:outline-none focus:border-blue-500"></textarea>
-                
-                <button type="button" onclick="submitForm()" 
-                        class="w-full bg-blue-700 hover:bg-blue-800 text-white py-5 rounded-3xl font-semibold text-lg transition">
-                    Send Message
-                </button>
-            </form>
-            
-            <div onclick="hideContactModal()" class="text-center py-6 text-gray-400 hover:text-gray-600 cursor-pointer text-sm font-medium border-t">
-                Close
-            </div>
-        </div>
+    <!-- CTA Banner -->
+    <div class="cta-banner">
+        <h2>Ready to Transform Your Geospatial Strategy?</h2>
+        <p>Partner with PXLGIS to unlock competitive advantage</p>
+        <a href="mailto:info@pxlgis.com" class="cta-button primary">
+            <i class="fas fa-envelope"></i> Schedule a Consultation
+        </a>
     </div>
 
-    <script>
-        function smoothScroll(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) element.scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function showContactModal() {
-            document.getElementById('contactModal').classList.remove('hidden');
-            document.getElementById('contactModal').classList.add('flex');
-        }
-        
-        function hideContactModal() {
-            const modal = document.getElementById('contactModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-        
-        function submitForm() {
-            alert("Thank you! Our team will get back to you within 24 hours.");
-            hideContactModal();
-        }
-    </script>
+    <!-- Contact Section -->
+    <section id="contact" class="section-alt">
+        <div class="section-header">
+            <span class="section-label">Connect With Us</span>
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Reach out to discuss how PXLGIS can support your geospatial objectives:</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email</h3>
+                <p><a href="mailto:info@pxlgis.com">info@pxlgis.com</a></p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Website</h3>
+                <p><a href="https://www.pxlgis.com" target="_blank">https://www.pxlgis.com</a></p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Contact</h3>
+                <p>H.No. 11-13-411/G1<br>Plot No. 82, Road No. 14<br>Alakapuri Colony<br>Hyderabad, Telangana 500035<br><strong>+91-8297728280</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>PXLGIS</h4>
+                <p>Enterprise GIS & IT solutions provider delivering advanced geospatial transformation across utilities, infrastructure and urban management sectors globally.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Strategic Consulting</a></li>
+                    <li><a href="#services">Data Management</a></li>
+                    <li><a href="#services">Application Development</a></li>
+                    <li><a href="#services">System Integration</a></li>
+                    <li><a href="#services">Remote Sensing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Expertise</h4>
+                <ul>
+                    <li><a href="#expertise">GIS Specializations</a></li>
+                    <li><a href="#expertise">Industry Domains</a></li>
+                    <li><a href="#expertise">Core Competencies</a></li>
+                    <li><a href="#technology">Technology Stack</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="https://www.pxlgis.com" target="_blank">Main Website</a></li>
+                    <li><a href="mailto:info@pxlgis.com">Email Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 PXL GeoInt Solutions (PXLGIS). All rights reserved. | Transform Your Geospatial Vision Into Reality.</p>
+        </div>
+    </footer>
 </body>
 </html>
